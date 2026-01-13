@@ -63,9 +63,6 @@
             <%= link_to "New Post", new_post_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <span class="nav-link">
-              Hi, <%= current_user.first_name.presence || current_user.email %>
-            </span>
           </li>
           <li class="nav-item">
             <%= link_to "Profile", edit_user_registration_path, class: "nav-link" %>
