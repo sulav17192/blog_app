@@ -38,7 +38,41 @@
     </div>
   <% end %>
 
-  <!-- Your existing content like navbar, yield, etc. -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+  <div class="container">
+    <%= link_to "Blog App", root_path, class: "navbar-brand" %>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "New Post", new_post_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">
+              Hi, <%= current_user.first_name.presence || current_user.email %>
+            </span>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Profile", edit_user_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Logout", destroy_user_session_path, method: :delete,
+                          class: "nav-link btn btn-link text-danger" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
   <%= yield %>
 </body>
 </html>

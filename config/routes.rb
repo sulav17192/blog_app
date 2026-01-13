@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   devise_scope :user do
 
-    resource :posts
+    resources :posts
     # Logged-out users see sign-up form at root
     unauthenticated do
       root to: "devise/registrations#new", as: :unauthenticated_root
