@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "posts/edit"
   devise_for :users
   devise_scope :user do
+
+    resource :posts
     # Logged-out users see sign-up form at root
     unauthenticated do
       root to: "devise/registrations#new", as: :unauthenticated_root
