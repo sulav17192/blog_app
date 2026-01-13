@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "posts/index"
+  get "posts/show"
+  get "posts/new"
+  get "posts/edit"
   devise_for :users
   devise_scope :user do
     # Logged-out users see sign-up form at root
