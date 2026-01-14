@@ -19,6 +19,7 @@ gem "jbuilder"
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'pg', '~> 1.6', '>= 1.6.3'
 gem 'letter_opener', '~> 1.10'
+gem 'pundit', '~> 2.5', '>= 2.5.2'
 
 # gem 'letter_opener_web', '~> 3.0'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
