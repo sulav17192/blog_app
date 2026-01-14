@@ -18,7 +18,7 @@
         <div class="card-footer bg-white border-0 d-flex gap-3">
           <%= link_to "Back to posts", posts_path, class: "btn btn-outline-secondary" %>
 
-          <% if user_signed_in? && current_user == @post.user %>
+          <% if user_signed_in? %>
             <%= link_to "Edit", edit_post_path(@post), class: "btn btn-outline-warning" %>
             <%= button_to "Delete", @post,
                           method: :delete,

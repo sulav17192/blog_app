@@ -1,8 +1,7 @@
 class PostPolicy < ApplicationPolicy
-  # REQUIRED: Scope class (Pundit calls this automatically)
   class Scope < Scope
     def resolve
-      scope.all   # Everyone can see all posts
+      scope.all 
     end
   end
 
@@ -15,7 +14,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+  user.present? && (user.author? || user.admin?)
   end
 
   def new?
