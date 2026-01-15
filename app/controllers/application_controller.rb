@@ -16,10 +16,24 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def user_not_authorized
-    flash[:alert] = "You are not authorized to perform this action."
-    redirect_to(request.referrer || root_path)
-  end
+
+def user_not_authorized(exception)
+  policy_action = exception.query.to_s.gsub("?", "")
+
+  message = case policy_action
+            when "create", "new"
+              "You need to be an author or admin to create new posts."
+            when "edit", "update"
+              "You can only edit your own posts (or be an admin)."
+            when "destroy"
+              "You can only delete your own posts (or be an admin)."
+            else
+              "Sorry, you're not allowed to do that."
+            end
+
+  flash[:alert] = message
+  redirect_to(request.referrer || root_path)
+end
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
