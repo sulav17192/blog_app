@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   after_action :verify_authorized, except: [:index, :show]
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = policy_scope(Post).order(created_at: :desc)
   end
 
   def show

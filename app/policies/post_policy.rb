@@ -2,9 +2,9 @@ class PostPolicy < ApplicationPolicy
 class Scope < Scope
     def resolve
       if user.nil? || user.reader?
-        scope.where(status: "published")
+        scope.where(status: 1)
       elsif user.author?
-        scope.where("user_id = ? OR status = ?", user.id, "published")
+        scope.where("user_id = ? OR status = ?", user.id, 1)
       elsif user.admin?
         scope.all
       else
