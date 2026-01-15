@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
+  # get "admin/dashboard"
   get "posts/index"
   get "posts/show"
   get "posts/new"
   get "posts/edit"
+  get "/admin", to: "admin#dashboard", as: :admin_dashboard
   devise_for :users
   devise_scope :user do
 
     resources :posts
+
     # Logged-out users see sign-up form at root
     unauthenticated do
       root to: "devise/registrations#new", as: :unauthenticated_root
