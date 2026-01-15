@@ -63,22 +63,38 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">  <!-- ← Changed ms-auto to me-auto so links are on left -->
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <%= link_to "View Blogs", posts_path, class: "nav-link" %>
         </li>
-        <!-- You can add more public links here if you want -->
       </ul>
 
-      <ul class="navbar-nav ms-auto align-items-center">  <!-- Right side: auth links -->
-        <% if user_signed_in? %>
+      <ul class="navbar-nav ms-auto align-items-center">
+        <% if policy(Post.new).create? %>
           <li class="nav-item">
             <%= link_to "New Post", new_post_path, class: "nav-link" %>
           </li>
+        <% end %>
+
+        <% if user_signed_in? %>
           <li class="nav-item">
-            <span class="nav-link fw-medium text-primary">
-              Hi, <%= current_user.first_name.presence || current_user.email %>
-            </span>
+            <span class="nav-link fw-medium text-primary d-flex align-items-center gap-2">
+            Hi, <%= current_user.first_name.presence || current_user.email %>
+
+        <% if current_user.admin? %>
+  <li class="nav-item">
+    <%= link_to "Admin Dashboard", "/admin", class: "nav-link text-danger fw-bold" %>
+  </li>
+<% end %>
+
+  <% if current_user.admin? %>
+    <span class="badge bg-danger">Admin</span>
+  <% elsif current_user.author? %>
+    <span class="badge bg-primary">Author</span>
+  <% else %>
+    <span class="badge bg-secondary">Reader</span>
+  <% end %>
+</span>
           </li>
           <li class="nav-item">
             <%= link_to "Profile", edit_user_registration_path, class: "nav-link" %>
