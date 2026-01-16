@@ -25,11 +25,11 @@
               </span>
             </td>
             <td>
-              <span class="badge bg-success">Active</span> <!-- Change to bg-danger for inactive if needed -->
+              <span class="badge bg-success">Active</span>
             </td>
             <td>
               <div class="btn-group btn-group-sm">
-                <%= button_to "Deactivate", "#", method: :delete, class: "btn btn-danger", data: { confirm: "Deactivate #{user.email}?" } %>
+                <%= button_to "Delete", "#", method: :delete, class: "btn btn-danger", data: { confirm: "Delete #{user.email}?" } %>
               </div>
             </td>
           </tr>

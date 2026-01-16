@@ -6,8 +6,8 @@ class AdminController < ApplicationController
     authorize :admin_dashboard, :dashboard?
 
     @users = User.all.order(created_at: :desc)
-    @total_posts = Post.count
-    @total_users = User.count
+    # @total_posts = Post.count
+    # @total_users = User.count
   end
 
   private
