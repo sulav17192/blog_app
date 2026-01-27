@@ -16,7 +16,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-gem 'devise', '~> 4.9', '>= 4.9.4'
+gem 'devise', '~> 5.0'
 gem 'pg', '~> 1.6', '>= 1.6.3'
 gem 'letter_opener', '~> 1.10'
 gem 'pundit', '~> 2.5', '>= 2.5.2'
